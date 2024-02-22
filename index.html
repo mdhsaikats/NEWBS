@@ -11,6 +11,43 @@
             padding: 0;
             background-color: #595656;
         }
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #201d1f;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(71, 71, 71, 0.1);
+            text-align: center;
+            color: #fff;
+        }
+        .login-container h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        .login-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .hidden {
+            display: none;
+        }
         .container {
             max-width: 1000px;
             margin: 20px auto;
@@ -18,23 +55,27 @@
             background-color: #201d1f;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(71, 71, 71, 0.1);
+            display: none;
+        }
+        .video-row {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+            margin-top: 20px;
         }
         .video-container {
-            width: calc(50% - 20px);
+            width: calc(33.33% - 20px);
             margin-bottom: 20px;
             box-sizing: border-box;
-            text-align: center; /* Center align the content */
-            color: #fff; /* Set the text color */
+            text-align: center;
+            color: #fff;
         }
         .video-container iframe {
             width: 100%;
             height: 200px;
             border: 0;
-            border-radius: 8px; /* Example border-radius */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Example box shadow */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .video-title {
             margin-top: 10px;
@@ -50,28 +91,64 @@
         }
         @media (max-width: 768px) {
             .video-container {
-                width: calc(100% - 20px);
+                width: calc(50% - 20px);
             }
         }
     </style>
 </head>
 <body>
 
+<div class="login-container">
+    <h2>Login</h2>
+    <form id="login-form">
+        <input type="text" name="username" placeholder="Username" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <input type="submit" value="Sign In">
+    </form>
+</div>
+
 <div class="container">
     <h2>NEWBS DASHBOARD</h2>
-    <div class="video-container">
-        <iframe src="https://www.2embed.cc/embed/tt10786774"  width="560" height="360" frameborder="0" scrolling="no" allowfullscreen title="Sam Bahadur"></iframe>
-        <div class="video-title">Sam Bahadur</div>
+    <div class="video-row">
+        <div class="video-container">
+            <iframe src="https://www.2embed.cc/embed/tt10786774"  width="560" height="360" frameborder="0" scrolling="no" allowfullscreen title="Sam Bahadur"></iframe>
+            <div class="video-title">Sam Bahadur</div>
+        </div>
+
+        <div class="video-container">
+            <iframe src="https://www.2embed.cc/embed/tt0137523"  width="560" height="360" frameborder="0" scrolling="no" allowfullscreen title="Sam Bahadur"></iframe>
+            <div class="video-title">Fight Club</div>
+        </div>
+        <div class="video-container">
+            <iframe src="https://www.2embed.cc/embed/tt4154796"  width="560" height="360" frameborder="0" scrolling="no" allowfullscreen title="Sam Bahadur"></iframe>
+            <div class="video-title">Fight Club</div>
+        </div>
+
+        <!-- Add more video-container divs with iframes and titles here -->
     </div>
-
-    <div class="video-container">
-        <iframe src="https://www.2embed.cc/embed/tt0137523"  width="560" height="360" frameborder="0" scrolling="no" allowfullscreen title="Sam Bahadur"></iframe>
-        <div class="video-title">Fight Club</div>
-    </div>
-
-    <!-- Add more video-container divs with iframes and titles here -->
-
 </div>
+
+<script>
+    const loginForm = document.getElementById('login-form');
+    const loginContainer = document.querySelector('.login-container');
+    const container = document.querySelector('.container');
+
+    loginForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const username = this.elements.username.value;
+        const password = this.elements.password.value;
+
+        // Mock authentication (replace this with your authentication logic)
+        if (username === 'saikat' && password === '29112003') {
+            // Show the container with videos
+            container.style.display = 'block';
+            // Hide the login form
+            loginContainer.style.display = 'none';
+        } else {
+            alert('Invalid username or password');
+        }
+    });
+</script>
 
 </body>
 </html>
